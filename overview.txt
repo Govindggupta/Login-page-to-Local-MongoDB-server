@@ -1,0 +1,13 @@
+Explanation:
+
+express, path, body-parser, and mongoose modules are imported.
+The Express application instance is created and stored in the app variable.
+The MongoDB connection is established using mongoose.connect(). We provide the connection URL (mongodb://localhost:27017/dummy_data) and specify options ({ useNewUrlParser: true, useUnifiedTopology: true }).
+A schema for the user data is defined using mongoose.Schema. It defines the structure of the user document.
+A model for the user schema is created using mongoose.model(). This model represents a collection in the MongoDB database and provides an interface for interacting with it.
+Static files (such as CSS, JavaScript, images) are served from the 'public' directory using express.static() middleware.
+Middleware functions from body-parser are used to parse URL-encoded and JSON request bodies.
+A route handler (GET /) is defined to serve the login form (index.html).
+Another route handler (POST /login) is defined to handle the submission of the login form. It extracts the email and password from the request body, creates a new user document using the User model, and attempts to save it to the MongoDB database. If the save operation is successful, it sends a 'Login successful!' response. If an error occurs during the save operation, it sends a 500 status code with an error message.
+The server listens for incoming HTTP requests on port 3000 (app.listen(PORT)).
+This code sets up a basic Express server with MongoDB integration to handle user login submissions and save user data to the database.
